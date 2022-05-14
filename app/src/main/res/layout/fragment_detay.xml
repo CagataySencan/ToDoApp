@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="detayFragment" type="com.cagataysencan.todoapp.fragments.DetayFragment" />
+        <variable name="detayToolbarBaslik" type="String" />
+        <variable name="taskObject" type="com.cagataysencan.todoapp.entity.Tasks" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.DetayFragment">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarDetay"
+            app:title="@{detayToolbarBaslik}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonUpdate"
+            android:layout_width="300dp"
+            android:onClick="@{() -> detayFragment.buttonUpdate(taskObject.task_id,taskNameText.getText().toString())}"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="71dp"
+            android:text="Update"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="141dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarDetay">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/taskNameText"
+                android:layout_width="305dp"
+                android:text="@{taskObject.task_name}"
+                android:layout_height="wrap_content"
+                android:hint="Task : " />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</layout>
